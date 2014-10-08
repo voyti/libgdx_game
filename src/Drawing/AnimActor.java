@@ -59,7 +59,10 @@ public class AnimActor extends Actor {
         this.setWidth(this.width);
         this.setHeight(this.height);
 
-        animSheet = new Texture(Gdx.files.internal(texturePath));
+        if (animSheet == null) {
+            animSheet = new Texture(Gdx.files.internal(texturePath));
+        }
+        
         TextureRegion[][] tmp = TextureRegion.split(animSheet, animSheet.getWidth() / frameCols, animSheet.getHeight() / frameRows);
         frames = new TextureRegion[frameRows * frameCols];
 
